@@ -28,6 +28,11 @@ namespace Exemple
             Console.WriteLine($"10 - 21 = {Calculator.Subtract(10, 21)}");
             Console.WriteLine($"10 * 21 = {Calculator.Multiply(10, 21)}");
             Console.WriteLine($"10 / 21 = {Calculator.Devide(10, 21)}");*/
+
+            /*var resourse = new Resource("test path");
+            resourse.UseResource();
+            resourse.UseResource();
+            resourse.UseResource();*/
         }
     }
 }
