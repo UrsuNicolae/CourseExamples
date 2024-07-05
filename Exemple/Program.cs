@@ -5,7 +5,7 @@ namespace Exemple
 {
     internal class Program
     {
-        
+
 
         static void Main(string[] args)
         {
@@ -34,7 +34,7 @@ namespace Exemple
             resourse.UseResource();
             resourse.UseResource();*/
 
-            var manager = new EmployeeManager();
+            /*var manager = new EmployeeManager();
             manager.AddIntern("Nicu", 21);
             manager.AddDeveloper("Vasile", 33);
             manager.AddAccountant("Ina", 24);
@@ -44,7 +44,20 @@ namespace Exemple
             foreach(var developer in manager.GetDevelopers())
             {
                 Console.WriteLine(developer.Name);
+            }*/
+
+            var inventory = new Inverntory();
+            try
+            {
+                var product = inventory[0];
             }
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine("Elementul este inexistent!");
+            }
+            inventory.AddProduct(new Product("telefon", 0.2));
+            var productExistent = inventory[0];
+            Console.WriteLine(productExistent.GetProductName());
         }
     }
 }
