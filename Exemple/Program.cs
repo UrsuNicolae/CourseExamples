@@ -33,6 +33,18 @@ namespace Exemple
             resourse.UseResource();
             resourse.UseResource();
             resourse.UseResource();*/
+
+            var manager = new EmployeeManager();
+            manager.AddIntern("Nicu", 21);
+            manager.AddDeveloper("Vasile", 33);
+            manager.AddAccountant("Ina", 24);
+            manager.AddDesigner("Irina", 27);
+
+            manager.DisplayEmployeesUnder25();
+            foreach(var developer in manager.GetDevelopers())
+            {
+                Console.WriteLine(developer.Name);
+            }
         }
     }
 }
