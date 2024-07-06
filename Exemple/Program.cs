@@ -10,7 +10,7 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            Punct punct = new Punct();
+            Punct punct = new Punct(3,4);
             punct.Scrie();
 
 
