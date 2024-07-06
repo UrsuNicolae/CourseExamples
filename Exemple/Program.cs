@@ -11,11 +11,11 @@ namespace Exemple
         static void Main(string[] args)
         {
             Punct punct = new Punct();
-            //punct.x = 0; punct.y = 0; acces restrictionat
             punct.Scrie();
-            Linie linie = new Linie();
-            //linie.x = 0; linie.y = 0;acces restrictionat
-            linie.xEnd = 10; linie.yEnd = 10;
+
+
+            //Apelul constructorului clasei de derivate
+            Linie linie = new Linie(2, 2, 10, 10);
             linie.Scrie();
         }
     }

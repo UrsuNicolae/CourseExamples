@@ -16,15 +16,19 @@ namespace Exemple.Inheritance
         }
     }
 
-    public class Linie : Punct
+    class Linie : Punct
     {
         public int xEnd;
         public int yEnd;
         public new void Scrie()
         {
-            x = 2; y = 2;//acces la membrii din clasa de baza
             Console.WriteLine("Segement: ({0}, {1}) - ({2}, {3})", x, y, xEnd, yEnd);
         }
+        //Constructorul clasei derivate
+        public Linie(int x1, int y1, int x2, int y2)
+        {
+            x = x1; y = y1;
+            xEnd = x2; yEnd = y2;
+        }
     }
-
 }
