@@ -8,10 +8,14 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var circle = new Circle { Radius = 5 };
-            var rectangle = new Rectangle { Width = 5, Height = 10 };
-            Console.WriteLine(circle.CalculateArea());
-            Console.WriteLine(rectangle.CalculateArea());
+            IMovable car = new MovableCar();
+            IMovable plane = new Plane();
+
+            List<IMovable> movables = new List<IMovable> { car, plane };
+            foreach(var movable in movables)
+            {
+                movable.Move();
+            }
         }
     }
 }
