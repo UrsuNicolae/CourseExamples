@@ -8,14 +8,9 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            IMovable car = new MovableCar();
-            IMovable plane = new Plane();
-
-            List<IMovable> movables = new List<IMovable> { car, plane };
-            foreach(var movable in movables)
-            {
-                movable.Move();
-            }
+            var operations = new MathOperations();
+            var result1 = operations.Add(1, 2);
+            var result2 = operations.Add(1.1, 2.2);
         }
     }
 }
