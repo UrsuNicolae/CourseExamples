@@ -1,38 +1,22 @@
-﻿namespace Exemple
+﻿using Exemple.ClassMembers;
+
+namespace Exemple
 {
     internal class Program
     {
-        public class Vehicle
-        {
-            public virtual void DisplayInfo()
-            {
-                Console.WriteLine("Informati generica despre vehicul");
-            }
-        }
-
-        public class Car : Vehicle
-        {
-            public override void DisplayInfo()
-            {
-                Console.WriteLine("Informatii despre masina");
-            }
-        }
-
-        public class Bicicle : Vehicle
-        {
-
-            public new void DisplayInfo()
-            {
-                Console.WriteLine("Informatii despre bicicleta");
-            }
-        }
-
         static void Main(string[] args)
         {
-            Vehicle car = new Car();
-            Vehicle bicile = new Bicicle();
+            var car = new Car("Dacia", "Logan", 2005, 0);
             car.DisplayInfo();
-            bicile.DisplayInfo();
+            car.Accelerate();
+            Console.WriteLine($"Speed: {car.Speed}");
+            car.Decelerate();
+            car.Decelerate();
+            car.Decelerate();
+            Console.WriteLine($"Speed: {car.Speed}");
+
+            var car2 = new Car(car);
+            car2.DisplayInfo();
         }
     }
 }
