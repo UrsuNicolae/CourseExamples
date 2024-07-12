@@ -1,5 +1,6 @@
 ﻿
 using Exemple.Inheritance.School;
+using Exemple.Inheritance.Shape;
 
 namespace Exemple
 {
@@ -9,12 +10,11 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            object studen = new Student("ion", 20, 5);
-            Person teacher = new Teacher("gigel", 30, "math");
+            var circle = new Circle();
+            var rectangle = new Rectangle();
 
-            Console.WriteLine(studen);
-            Console.WriteLine(teacher);
-
+            circle.Draw();
+            rectangle.Draw();
         }
     }
 }
