@@ -15,6 +15,8 @@ namespace Exemple.Inheritance
         {
             this.x = x;
             this.y = y;
+
+            Console.WriteLine("Constructor din clasa derivata");
         }
         public void Scrie()
         {
@@ -23,8 +25,15 @@ namespace Exemple.Inheritance
     }
     public class Linie : Punct
     {
+
         public int xEnd;
         public int yEnd;
+
+        static Linie()
+        {
+
+           Console.WriteLine("Constructor static din clasa Linie");
+        }
         public new void Scrie()
         {
             Console.Write("Segment: ");
@@ -35,6 +44,7 @@ namespace Exemple.Inheritance
         public Linie(int x1, int y1, int x2, int y2) : base(x1, y1)
         {
             xEnd = x2; yEnd = y2;
+            Console.WriteLine("Constructor din clasa Linie");
         }
     }
 

@@ -1,6 +1,5 @@
-﻿using Exemple.ClassAndObject;
-using Exemple.Inheritance;
-using System.Security.Cryptography.X509Certificates;
+﻿
+using System.Security.Cryptography;
 
 namespace Exemple
 {
@@ -10,8 +9,38 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            Linie linie = new Linie(2, 2, 10, 10);
-            linie.Scrie();
+            int Rand()
+            {
+                var rand = new Random();
+                return rand.Next(1, 200);
+            }
+
+            int TrueRandom()
+            {
+                RandomNumberGenerator rng = new RNGCryptoServiceProvider();
+                try
+                {
+                    
+                    byte[] bytes = new byte[4];
+                    rng.GetBytes(bytes);
+                    rng.Dispose();
+                    return BitConverter.ToInt32(bytes, 0);
+                }
+                catch (CryptographicException)
+                {
+                    return Rand();
+                }
+                finally
+                {
+                    rng.Dispose();
+                }
+            }
+
+            for (int i = 0, j = 0; i < 100; i++, j++)
+            {
+                Console.WriteLine(TrueRandom());
+            }
+
         }
     }
 }
