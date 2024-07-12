@@ -1,4 +1,5 @@
 ﻿
+using Exemple.Inheritance.DiamondProblem;
 using Exemple.Inheritance.School;
 using Exemple.Inheritance.Shape;
 
@@ -10,11 +11,8 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var circle = new Circle();
-            var rectangle = new Rectangle();
-
-            circle.Draw();
-            rectangle.Draw();
+            IRight diamond = new Diamond();
+            diamond.DoWork();
         }
     }
 }
