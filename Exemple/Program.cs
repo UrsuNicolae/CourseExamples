@@ -1,6 +1,7 @@
 ﻿using Exemple.ClassMembers;
 using Exemple.Encapsulation;
 using Exemple.EncapsulationAndAbstraction;
+using Exemple.EncapsulationAndAbstraction.LogExercise;
 using System.Runtime.CompilerServices;
 using Car = Exemple.EncapsulationAndAbstraction.Car;
 
@@ -10,12 +11,13 @@ namespace Exemple
     {
         static void Main(string[] args)
         {
-            BaseCar car = new Car(4, "bmw", "seria 5", 2022, 50000 );
-            car.DisplayInfo();
-
-
-            BaseCar truck = new Truck(2000, "volvo", "asdafa", 2000, 300000);
-            truck.DisplayInfo();
+            var consoleLogger = new ConsoleLogger();
+            var path = "C:\\Users\\NURSU\\Desktop\\Curs\\log.txt";
+            var fileLogger = new FileLogger(path);
+            var paymentManagement = new PaymentManagement(fileLogger);
+            paymentManagement.ProcessPayment(100);
+            paymentManagement.RefundPayment(50);
+            paymentManagement.ProcessPayment(-1);
         }
     }
 }
