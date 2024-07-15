@@ -1,9 +1,4 @@
-﻿using Exemple.ClassMembers;
-using Exemple.Encapsulation;
-using Exemple.EncapsulationAndAbstraction;
-using Exemple.EncapsulationAndAbstraction.LogExercise;
-using System.Runtime.CompilerServices;
-using Car = Exemple.EncapsulationAndAbstraction.Car;
+﻿using Exemple.EncapsulationAndAbstraction.EmployeeManagement;
 
 namespace Exemple
 {
@@ -11,13 +6,11 @@ namespace Exemple
     {
         static void Main(string[] args)
         {
-            var consoleLogger = new ConsoleLogger();
-            var path = "C:\\Users\\NURSU\\Desktop\\Curs\\log.txt";
-            var fileLogger = new FileLogger(path);
-            var paymentManagement = new PaymentManagement(fileLogger);
-            paymentManagement.ProcessPayment(100);
-            paymentManagement.RefundPayment(50);
-            paymentManagement.ProcessPayment(-1);
+            var manager = new EmployeeManger();
+            manager.AddEmployee(new FullTimeEmployee("John", "123", 50000));
+            manager.AddEmployee(new ParTimeEmployee("Nick", "1323", 20000));
+
+            manager.DisplayAllEmployees();
         }
     }
 }

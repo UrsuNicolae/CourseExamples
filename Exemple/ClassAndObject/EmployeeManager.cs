@@ -1,4 +1,4 @@
-﻿namespace Exemple.ClassAndObject
+﻿/*namespace Exemple.ClassAndObject
 {
     public class EmployeeManager
     {
@@ -84,3 +84,4 @@
         Designer = 4
     }
 }
+*/
