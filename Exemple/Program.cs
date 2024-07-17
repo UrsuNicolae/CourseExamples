@@ -1,4 +1,5 @@
-﻿using Exemple.ClassMembers;
+﻿using Exemple.ClassAndObject;
+using Exemple.ClassMembers;
 using Exemple.Polimorifism;
 using System.Runtime.CompilerServices;
 
@@ -8,14 +9,21 @@ namespace Exemple
     {
         static void Main(string[] args)
         {
-            var intLogger = new GenericLogger<int>();
-            intLogger.Log(12);
+            List<Produs> produse = new List<Produs>
+            {
+                new Produs("carte", "roman", 10, 0),
+                new Produs("pix", "albastru", 1, 0.5m)
+            };
 
-            var dateTimeLogger = new GenericLogger<DateTime>();
-            dateTimeLogger.Log(DateTime.UtcNow);
-
-            var stringLogger = new GenericLogger<string>();
-            stringLogger.Log("test");
+            foreach (var produs in produse)
+            {
+                Console.WriteLine(produs);
+                produs.ApplyDiscountRate(5m);
+            }
+            foreach (var produs in produse)
+            {
+                Console.WriteLine(produs);
+            }
         }
     }
 }
