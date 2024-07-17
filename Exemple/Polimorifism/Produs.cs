@@ -12,7 +12,7 @@
 
         public Produs(string name, string description, decimal price, decimal discountRate)
         {
-            Name = name;S
+            Name = name;
             Description = description;
             Price = price * (1 - discountRate);
             _logger = new GenericLogger<Produs>();
