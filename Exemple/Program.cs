@@ -6,12 +6,15 @@ namespace Exemple
     {
         static void Main(string[] args)
         {
-            Package standart = new StandartPackage(10, 20);
-            Package prioritat = new PrioritarPackage(10, 20);
-            Package fragile = new FragilePackage(10, 20);
-            Console.WriteLine("Standart " + standart.ToString());
-            Console.WriteLine("Prioritar " + prioritat.ToString());
-            Console.WriteLine("Fragil " + fragile.ToString());
+            var firstArtist = new SoloArtist("Jon", "Pop", "Guitar");
+            var secondArtist = new Band("Gandul Matei", "Pop", 5);
+            var thirdArtist = new DJ("Hardwell", "Electro", "House");
+
+            var event1 = new PrivateEvent("Chisinau", new DateTime(2025, 1, 1), firstArtist);
+            var event2 = new PublicEvent("Chisinau", new DateTime(2025, 2, 2), secondArtist, new List<Artist> { thirdArtist });
+
+            event1.DisplayDetails();
+            event2.DisplayDetails();
         }
     }
 }
