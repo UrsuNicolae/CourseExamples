@@ -1,20 +1,26 @@
-﻿using Exemple.Polimorifism;
+﻿using Exemple.Genercs;
 
 namespace Exemple
 {
     internal class Program
     {
+        
+
         static void Main(string[] args)
         {
-            var firstArtist = new SoloArtist("Jon", "Pop", "Guitar");
-            var secondArtist = new Band("Gandul Matei", "Pop", 5);
-            var thirdArtist = new DJ("Hardwell", "Electro", "House");
+            var array = new Test[]
+            {
+                new Test { Value = 3, ValueName = "Three" },
+                new Test { Value = 1, ValueName = "One" },
+                new Test { Value = 2, ValueName = "Two" }
+            };
 
-            var event1 = new PrivateEvent("Chisinau", new DateTime(2025, 1, 1), firstArtist);
-            var event2 = new PublicEvent("Chisinau", new DateTime(2025, 2, 2), secondArtist, new List<Artist> { thirdArtist });
+            Sortable.SortArray(array);
 
-            event1.DisplayDetails();
-            event2.DisplayDetails();
+            foreach (var item in array)
+            {
+                Console.WriteLine($"{item.Value} - {item.ValueName}");
+            }
         }
     }
 }
