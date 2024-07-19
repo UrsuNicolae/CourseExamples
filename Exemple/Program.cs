@@ -8,19 +8,17 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var array = new Test[]
+            var testArray = new Test[]
             {
-                new Test { Value = 3, ValueName = "Three" },
-                new Test { Value = 1, ValueName = "One" },
-                new Test { Value = 2, ValueName = "Two" }
+                new Test{Value = 1, ValueName = "one"},
+                new Test{Value = 2, ValueName = "two"},
+                new Test{Value = 3, ValueName = "thre"},
+                new Test{Value = 4, ValueName = "four"},
+                new Test{Value = 5, ValueName = "one"},
             };
 
-            Sortable.SortArray(array);
-
-            foreach (var item in array)
-            {
-                Console.WriteLine($"{item.Value} - {item.ValueName}");
-            }
+            var item = Findeble.FindItem<Test>(testArray, x => x.ValueName == "one");
+            Console.WriteLine(item);
         }
     }
 }
