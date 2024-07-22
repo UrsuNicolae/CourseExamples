@@ -8,15 +8,16 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var intTree = new BinarySerachTeary<int>();
-            intTree.Insert(10);
-            intTree.Insert(5);
-            intTree.Insert(15);
-            intTree.Insert(3);
+            var productRepository = new ProductRepository();
+            productRepository.Add(new Product(1, "Laptop", 1500, ProductCategory.Electronics));
+            productRepository.Add(new Product(2, "T-shirt", 20, ProductCategory.Clothing));
+            productRepository.Add(new Product(3, "Apple", 2, ProductCategory.Food));
 
-            intTree.Display();
-
-            Console.WriteLine(intTree.Search(20));
+            var product = productRepository.GetProductByCategory(ProductCategory.Electronics);
+            Console.WriteLine(product);
+            productRepository.Remove(product);
+            product = productRepository.GetProductByCategory(ProductCategory.Electronics);
+            Console.WriteLine(product);
         }
     }
 }
