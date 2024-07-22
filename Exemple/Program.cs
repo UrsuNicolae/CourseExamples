@@ -8,16 +8,19 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var productRepository = new ProductRepository();
-            productRepository.Add(new Product(1, "Laptop", 1500, ProductCategory.Electronics));
-            productRepository.Add(new Product(2, "T-shirt", 20, ProductCategory.Clothing));
-            productRepository.Add(new Product(3, "Apple", 2, ProductCategory.Food));
+            var dictionary = new PhoneDictionary();
+            dictionary.Add("John", "123456789");
+            dictionary.Add("Nick", "123122222");
+            dictionary.Add("Tom", "123456789");
+            dictionary.Add("John", "123123");
 
-            var product = productRepository.GetProductByCategory(ProductCategory.Electronics);
-            Console.WriteLine(product);
-            productRepository.Remove(product);
-            product = productRepository.GetProductByCategory(ProductCategory.Electronics);
-            Console.WriteLine(product);
+
+            Console.WriteLine(dictionary);
+
+
+            dictionary.RemovePhone("Tom", "123456789");
+            dictionary.Remove("John");
+            Console.WriteLine(dictionary);
         }
     }
 }
