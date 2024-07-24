@@ -1,4 +1,5 @@
 ﻿using Exemple.Genercs;
+using Exemple.Linq;
 
 namespace Exemple
 {
@@ -8,15 +9,22 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var store = new EntityRepository<StoreCustomer, int>();
-            store.Create(new StoreCustomer(1, "John"));
-            store.Create(new StoreCustomer(2, "Doe"));
-            store.Read(1);
+            var employees = new List<Employee>();
+            employees.Add(new Employee { Id = 1, Name = "Nick", Age = 25, Department = "HR" });
+            employees.Add(new Employee { Id = 2, Name = "Jane", Age = 30, Department = "IT" });
+            employees.Add(new Employee { Id = 3, Name = "Marie", Age = 26, Department = "IT" });
+            employees.Add(new Employee { Id = 4, Name = "Fill", Age = 22, Department = "HR" });
+            employees.Add(new Employee { Id = 5, Name = "Annie", Age = 25, Department = "HR" });
 
-            var store2 = new EntityRepository<StoreProduct<char>, char>();
-            store2.Create(new StoreProduct<char>('1', "Product 1"));
-            store2.Create(new StoreProduct<char>('2', "Product 2"));
-            store2.Read('2');
+            var employeesAfter25 = employees
+                .Where(e => e.Age > 22)
+                .OrderBy(e => e.Name)
+                .Select(e => new {e.Name, e.Age});
+
+            foreach (var employee in employeesAfter25)
+            {
+                Console.WriteLine($"Name: {employee.Name}, Age: {employee.Age}");
+            }
         }
     }
 }
