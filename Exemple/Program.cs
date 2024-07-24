@@ -9,30 +9,18 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var orders = new[]
-            {
-                new Order { OrderId = 1, Product = "Book", Quantity = 10, Price = 100 },
-                new Order { OrderId = 2, Product = "Game", Quantity = 5, Price = 250 },
-                new Order { OrderId = 3, Product = "Phone", Quantity = 1, Price = 800 },
-                new Order { OrderId = 4, Product = "Book", Quantity = 5, Price = 50 },
-                new Order { OrderId = 5, Product = "Phone", Quantity = 2, Price = 160 },
-                new Order { OrderId = 6, Product = "Game", Quantity = 3, Price = 150 },
-                new Order { OrderId = 7, Product = "Book", Quantity = 2, Price = 20 },
-                new Order { OrderId = 8, Product = "Game", Quantity = 1, Price = 50 }
-            };
+            var students = new List<Student>();
+            students.Add(new Student { StudentId = 1, Name = "John", Grades = new List<int> { 90, 92, 80 } });
+            students.Add(new Student { StudentId = 2, Name = "Jane", Grades = new List<int> { 88, 94, 90 } });
+            students.Add(new Student { StudentId = 3, Name = "Sue", Grades = new List<int> { 92, 90, 96 } });
+            students.Add(new Student { StudentId = 4, Name = "Joe", Grades = new List<int> { 68, 74, 82 } });
+            students.Add(new Student {  StudentId = 5, Name = "Don", Grades = new List<int> { 88, 62, 70 } });
+            students.Add(new Student {  StudentId = 6, Name = "Ron", Grades = new List<int> { 42, 8, 90 } });
 
-            var groupedOrders = orders.GroupBy(order => order.Product);
-
-            var groupDetails = groupedOrders.Select(group => new
+            var eminentStudents = students.Where(s => s.Grades.Average() > 85).Select(s => new {s.Name, AverageGrade = s.Grades.Average()});
+            foreach (var student in eminentStudents)
             {
-                Product = group.Key,
-                TotalQuantity = group.Sum(order => order.Quantity),
-                TotalPrice = group.Sum(order => order.Price)
-            });
-
-            foreach (var groupDetail in groupDetails)
-            {
-                Console.WriteLine($"Product: {groupDetail.Product}, Total Quantity: {groupDetail.TotalQuantity}, Total Price: {groupDetail.TotalPrice}");
+                Console.WriteLine($"{student.Name} has an average grade of {student.AverageGrade}");
             }
         }
     }
