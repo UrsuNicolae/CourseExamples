@@ -1,24 +1,27 @@
-﻿namespace Exemple.Solid
+﻿using System.Xml.Linq;
+
+namespace Exemple.Solid
 {
+    class SalaryCalculator
+    {
+        public void CalculatePay(Employee employee)
+        {
+            Console.WriteLine($"Calculating pay for {employee.Name}...");
+        }
+    }
+
+    class DbSave
+    {
+        public void Save(Employee employee)
+        {
+            Console.WriteLine($"Saving {employee.Name} to the database...");
+        }
+    }
 
     class Employee
     {
         public string Name { get; set; }
         public decimal Salary { get; set; }
-
-
-        public void CalculatePay()
-        {
-            // Logica pentru calcularea salariului
-            Console.WriteLine($"Calculating pay for {Name}...");
-        }
-
-
-        public void Save()
-        {
-            // Logica pentru salvarea angajatului în baza de date
-            Console.WriteLine($"Saving {Name} to the database...");
-        }
     }
 
     class Program
@@ -26,8 +29,10 @@
         static void Main(string[] args)
         {
             Employee employee = new Employee { Name = "John", Salary = 50000 };
-            employee.CalculatePay();
-            employee.Save();
+            SalaryCalculator calculator = new SalaryCalculator();
+            DbSave dbSaver = new DbSave();
+            calculator.CalculatePay(employee);
+            dbSaver.Save(employee);
         }
     }
 }

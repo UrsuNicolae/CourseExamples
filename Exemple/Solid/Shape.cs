@@ -1,39 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exemple.Solid
+﻿namespace Exemple.Solid
 {
-    public class Shape
+    public abstract class Shape
     {
-        public enum ShapeType
+       public abstract double CalculateArea();
+    }
+
+    public class Circle : Shape
+    {
+        public double Radius { get; set; }
+
+        public Circle(double radius)
         {
-            Circle,
-            Rectangle,
-            Triangle
+            Radius = radius;
         }
 
-        public ShapeType Type { get; set; }
-        public double Radius { get; set; } // For Circle
-        public double Width { get; set; }  // For Rectangle
-        public double Height { get; set; } // For Rectangle and Triangle
-        public double Base { get; set; }   // For Triangle
-
-        public double CalculateArea()
+        public override double CalculateArea()
         {
-            switch (Type)
-            {
-                case ShapeType.Circle:
-                    return Math.PI * Radius * Radius;
-                case ShapeType.Rectangle:
-                    return Width * Height;
-                case ShapeType.Triangle:
-                    return 0.5 * Base * Height;
-                default:
-                    throw new ArgumentException("Invalid shape type");
-            }
+            return Math.PI * Math.Pow(Radius, 2);
+        }
+    }
+
+    public class Square : Shape
+    {
+        public double Side { get; set; }
+
+        public Square(double side)
+        {
+            Side = side;
+        }
+
+        public override double CalculateArea()
+        {
+            return Math.Pow(Side, 2);
+        }
+    }
+
+    public class Rectangle : Shape
+    {
+        public double Width { get; set; }
+        public double Height { get; set; }
+
+        public Rectangle(double width, double height)
+        {
+            Width = width;
+            Height = height;
+        }
+
+        public override double CalculateArea()
+        {
+            return Width * Height;
+        }
+    }
+
+
+    public class Triangle : Shape
+    {
+        public double Base { get; set; }
+        public double Height { get; set; }
+
+        public Triangle(double @base, double height)
+        {
+            Base = @base;
+            Height = height;
+        }
+
+        public override double CalculateArea()
+        {
+            return (Base * Height) / 2;
         }
     }
 
