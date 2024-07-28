@@ -50,7 +50,7 @@
 
     class PrinterProgram
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             IMultiFunctionDevice printer = new BasicPrinter();
             printer.Print("Hello, World!");

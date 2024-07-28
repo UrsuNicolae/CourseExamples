@@ -34,7 +34,7 @@ namespace Exemple.Solid
 
     class BirdProgram
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Bird myBird = new Bird();
             myBird.Fly();

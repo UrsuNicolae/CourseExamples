@@ -26,7 +26,7 @@ namespace Exemple.Solid
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Employee employee = new Employee { Name = "John", Salary = 50000 };
             SalaryCalculator calculator = new SalaryCalculator();

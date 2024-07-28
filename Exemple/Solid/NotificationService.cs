@@ -34,7 +34,7 @@ namespace Exemple.Solid
 
     class NotificationProgram
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             EmailService emailService = new EmailService();
             NotificationService notificationService = new NotificationService(emailService);

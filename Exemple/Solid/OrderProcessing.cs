@@ -47,7 +47,7 @@
 
     class OrderProcessingProgram
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             // Crearea și procesarea unei comenzi
             OrderProcessing order = new OrderProcessing

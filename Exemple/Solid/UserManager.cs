@@ -63,7 +63,7 @@
 
     class UserManagerProgram
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             // Crearea și gestionarea unui utilizator
             UserManager userManager = new UserManager
