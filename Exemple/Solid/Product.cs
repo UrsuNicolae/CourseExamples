@@ -59,7 +59,7 @@ namespace Exemple.Solid
 
 
     // Clasa pentru gestionarea comenzilor
-    class Order
+    class ProductOrder
     {
         public Product Product { get; set; }
         public decimal TotalPrice { get; set; }

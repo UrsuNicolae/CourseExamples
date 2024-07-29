@@ -24,7 +24,7 @@ namespace Exemple.Solid
         public decimal Salary { get; set; }
     }
 
-    class Program
+    /*class Program
     {
         static void Main(string[] args)
         {
@@ -34,5 +34,5 @@ namespace Exemple.Solid
             calculator.CalculatePay(employee);
             dbSaver.Save(employee);
         }
-    }
+    }*/
 }

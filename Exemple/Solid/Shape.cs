@@ -2,7 +2,7 @@
 {
     public abstract class Shape
     {
-       public abstract double CalculateArea();
+        public abstract double CalculateArea();
     }
 
     public class Circle : Shape
@@ -70,4 +70,25 @@
         }
     }
 
+    /*public class ShapeProgram
+    {
+        public static void Main(string[] args)
+        {
+            var circle = new Circle(5);
+            var square = new Square(5);
+            var rectangle = new Rectangle(5, 10);
+            var triangle = new Triangle(5, 10);
+
+            CalculateAndPrintArea(circle);
+            CalculateAndPrintArea(square);
+            CalculateAndPrintArea(rectangle);
+            CalculateAndPrintArea(triangle);
+        }
+
+        static void CalculateAndPrintArea(Shape shape)
+        {
+            double area = shape.CalculateArea();
+            Console.WriteLine($"Area: {area}");
+        }
+    }*/
 }
