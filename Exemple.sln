@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exemple", "Exemple\Exemple.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitExample", "XUnitExample\XUnitExample.csproj", "{A7763DDC-2017-42AC-92BE-F6CB1D84A38E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template2", "Template2\Template2.csproj", "{EB5F363D-C01B-4CD8-8B5B-2DAF4B7A3EF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A7763DDC-2017-42AC-92BE-F6CB1D84A38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7763DDC-2017-42AC-92BE-F6CB1D84A38E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7763DDC-2017-42AC-92BE-F6CB1D84A38E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5F363D-C01B-4CD8-8B5B-2DAF4B7A3EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5F363D-C01B-4CD8-8B5B-2DAF4B7A3EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5F363D-C01B-4CD8-8B5B-2DAF4B7A3EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5F363D-C01B-4CD8-8B5B-2DAF4B7A3EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

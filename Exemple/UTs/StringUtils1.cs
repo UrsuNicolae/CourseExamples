@@ -1,6 +1,6 @@
 ﻿namespace Exemple.UTs
 {
-    public class StringUtils
+    public class StringUtils1
     {
         public string Reverse(string input)
         {

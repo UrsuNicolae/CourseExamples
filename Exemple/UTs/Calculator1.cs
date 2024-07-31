@@ -1,6 +1,6 @@
 ﻿namespace Exemple.UTs
 {
-    public class Calculator
+    public class Calculator1
     {
         public int Add(int a, int b)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exemple.UTs
 {
-    public class ArrayUtils
+    public class ArrayUtils1
     {
         public static int Sum(int[] array)
         {
@@ -17,7 +17,6 @@ namespace Exemple.UTs
             }
             return sum;
         }
-
 
         public static int[] MergeArrays(int[] array1, int[] array2)
         {

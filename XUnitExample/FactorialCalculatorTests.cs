@@ -13,7 +13,7 @@ namespace XUnitExample
         public void TestCalculateFactorial(int n, int expectedFactorial)
         {
             // Arrange
-            FactorialCalculator calculator = new FactorialCalculator();
+            FactorialCalculator1 calculator = new FactorialCalculator1();
 
 
             // Act

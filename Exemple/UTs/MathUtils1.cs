@@ -1,6 +1,6 @@
 ﻿namespace Exemple.UTs
 {
-    public class MathUtils
+    public class MathUtils1
     {
         public static int Factorial(int n)
         {
