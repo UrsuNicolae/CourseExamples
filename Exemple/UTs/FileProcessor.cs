@@ -19,9 +19,25 @@
 
         public int CountLinesInFile(string filePath)
         {
-            var fileContent = _fileReader.ReadFile(filePath);
-            return fileContent.Split('\n').Length;
+            try
+            {
+                Console.WriteLine(filePath);
+                var fileContent = _fileReader.ReadFile(filePath);
+                if (string.IsNullOrEmpty(fileContent))
+                {
+                    return 0;
+                }
+
+                return fileContent.Split('\n').Length;
+            }
+            catch (FileNotFoundException)
+            {
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
-
 }
