@@ -70,9 +70,9 @@
         }
     }
 
-    public class ShapeProgram
+    /*public class ShapeProgram
     {
-        public static void Main1(string[] args)
+        public static void Main(string[] args)
         {
             var circle = new Circle(5);
             var square = new Square(5);
@@ -90,5 +90,5 @@
             double area = shape.CalculateArea();
             Console.WriteLine($"Area: {area}");
         }
-    }
+    }*/
 }

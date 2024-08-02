@@ -9,38 +9,62 @@ namespace Exemple.Solid
     using System;
 
     // Clasa EmailService fără interfață
-    class EmailService
+
+    interface IMessageService
+    {
+        void Send(string message);
+    }
+
+
+    class EmailService : IMessageService
     {
         public void Send(string message)
         {
-            Console.WriteLine($"Sending email: {message}");
+            Console.WriteLine($"Sending email 2.1: {message}");
         }
     }
 
-    class NotificationService
+    class EmailService2 : IMessageService
     {
-        private EmailService _emailService;
-
-        public NotificationService(EmailService emailService)
+        public void Send(string message)
         {
-            _emailService = emailService;
+            Console.WriteLine($"Sending email 2.2: {message}");
+        }
+    }
+
+    class SmsService : IMessageService
+    {
+        public void Send(string message)
+        {
+            Console.WriteLine($"Sending SMS: {message}");
+        }
+    }
+
+    class NotificationService1
+    {
+        private IMessageService _mesageService;
+
+        public NotificationService1(IMessageService messageService)
+        {
+            _mesageService = messageService;
         }
 
         public void Notify(string message)
         {
-            _emailService.Send(message);
+            _mesageService.Send(message);
+            //...
         }
     }
 
-    class NotificationProgram
+    /*class NotificationProgram
     {
-        static void Main1(string[] args)
+        static void Main(string[] args)
         {
-            EmailService emailService = new EmailService();
-            NotificationService notificationService = new NotificationService(emailService);
+            IMessageService emailService = new SmsService();
+            var notificationService = new NotificationService(emailService);
 
             notificationService.Notify("Hello, World!");
         }
-    }
+    }*/
 
 }

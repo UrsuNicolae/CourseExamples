@@ -3,15 +3,24 @@
     using System;
 
     // Interfață unică care combină toate funcționalitățile (încalcă ISP)
-    interface IMultiFunctionDevice
+    interface ICopier
+    {
+        void Copy(string document);
+    }
+
+    interface IPrinter
     {
         void Print(string document);
+    }
+
+    interface IScanner
+    {
         void Scan(string document);
         void Copy(string document);
     }
 
     // Clasă care implementează interfața IMultiFunctionDevice
-    class AllInOnePrinter : IMultiFunctionDevice
+    class AllInOnePrinter : ICopier, IScanner, IPrinter
     {
         public void Print(string document)
         {
@@ -30,7 +39,7 @@
     }
 
     // Clasă care implementează interfața IMultiFunctionDevice, dar folosește doar funcționalitatea de printare (încalcă ISP)
-    class BasicPrinter : IMultiFunctionDevice
+    class BasicPrinter : IPrinter
     {
         public void Print(string document)
         {
@@ -40,19 +49,13 @@
         public void Scan(string document)
         {
             throw new NotImplementedException("BasicPrinter does not support scanning.");
-        }
-
-        public void Copy(string document)
-        {
-            throw new NotImplementedException("BasicPrinter does not support copying.");
-        }
     }
 
-    class PrinterProgram
+    /*class PrinterProgram
     {
-        static void Main1(string[] args)
+        static void Main(string[] args)
         {
-            IMultiFunctionDevice printer = new BasicPrinter();
+            IPrinter printer = new BasicPrinter();
             printer.Print("Hello, World!");
 
             try
@@ -73,6 +76,7 @@
                 Console.WriteLine(ex.Message);
             }
         }
-    }
+        }
+    }*/
 
 }

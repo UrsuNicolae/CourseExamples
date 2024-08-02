@@ -6,54 +6,62 @@ using System.Threading.Tasks;
 
 namespace Exemple.Solid
 {
-    using System;
-
-    // Superclasă pentru păsări
-    class Bird
+    interface IBird
     {
-        public virtual void Fly()
-        {
-            Console.WriteLine("The bird is flying.");
-        }
+        void Move();
     }
 
+    interface IFlyingBird : IBird
+    {
+        void Fly();
+    }
+
+    interface ISwimmingBird : IBird
+    {
+        void Swim();
+    }
+    }
+
+
     // Subclasă pentru pinguin, care nu poate zbura
-    class Penguin : Bird
+    class Penguin : ISwimmingBird
     {
         // Metoda Fly aruncă o excepție, deoarece pinguinii nu pot zbura
-        public override void Fly()
+        public void Move()
         {
-            throw new NotImplementedException("Penguins cannot fly.");
+            Swim();
         }
 
         public void Swim()
         {
-            Console.WriteLine("The penguin is swimming.");
+            Console.WriteLine("The bird is swimming.");
         }
     }
 
-    class BirdProgram
+    class Cocostarc : IFlyingBird
     {
-        static void Main1(string[] args)
+        public void Fly()
         {
-            Bird myBird = new Bird();
-            myBird.Fly();
+            Console.WriteLine("The bird is flying.");
+        }
+
+        public void Move()
+        {
+            Fly();
+        }
+    }
+
+    /*class BirdProgram
+    {
+        static void Main(string[] args)
+        {
+            IBird myBird = new Cocostarc();
+            myBird.Move();
 
             // Substituție incorectă, deoarece Penguin nu respectă comportamentul așteptat al lui Bird
-            Bird myPenguin = new Penguin();
-            try
-            {
-                myPenguin.Fly(); // Va arunca o excepție
-            }
-            catch (NotImplementedException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            // Accesarea metodei specifice subclasei
-            Penguin penguin = new Penguin();
-            penguin.Swim();
+            IBird myPenguin = new Penguin();
+            myPenguin.Move();
         }
-    }
+    }*/
 
 }
