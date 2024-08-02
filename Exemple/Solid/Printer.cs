@@ -49,34 +49,34 @@
         public void Scan(string document)
         {
             throw new NotImplementedException("BasicPrinter does not support scanning.");
-    }
+        }
 
-    /*class PrinterProgram
-    {
-        static void Main(string[] args)
+        /*class PrinterProgram
         {
-            IPrinter printer = new BasicPrinter();
-            printer.Print("Hello, World!");
+            static void Main(string[] args)
+            {
+                IPrinter printer = new BasicPrinter();
+                printer.Print("Hello, World!");
 
-            try
-            {
-                printer.Scan("Hello, World!"); // Va arunca o excepție
-            }
-            catch (NotImplementedException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                try
+                {
+                    printer.Scan("Hello, World!"); // Va arunca o excepție
+                }
+                catch (NotImplementedException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
-            try
-            {
-                printer.Copy("Hello, World!"); // Va arunca o excepție
+                try
+                {
+                    printer.Copy("Hello, World!"); // Va arunca o excepție
+                }
+                catch (NotImplementedException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            catch (NotImplementedException ex)
-            {
-                Console.WriteLine(ex.Message);
             }
-        }
-        }
-    }*/
-
+        }*/
+    }
 }

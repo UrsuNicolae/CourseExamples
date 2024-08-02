@@ -3,12 +3,12 @@
     using System;
 
     // Clasă monolitică care încalcă principiile SOLID
-    interface IOrderValidator
+    public interface IOrderValidator
     {
         void ValidateOrder(Order order);
     }
 
-    class OrderValidator : IOrderValidator
+    public class OrderValidator : IOrderValidator
     {
         public void ValidateOrder(Order order)
         {
@@ -20,12 +20,12 @@
         }
     }
 
-    interface IPaymentProcessor
+    public interface IPaymentProcessor
     {
         void ProcessPayment(Order order);
     }
 
-    class PaymentProcessor : IPaymentProcessor
+    public class PaymentProcessor : IPaymentProcessor
     {
         public void ProcessPayment(Order order)
         {
@@ -37,12 +37,12 @@
         }
     }
 
-    interface IInvoiceGenerator
+    public interface IInvoiceGenerator
     {
         void GenerateInvoice(Order order);
     }
 
-    class InvoiceGenerator : IInvoiceGenerator
+    public class InvoiceGenerator : IInvoiceGenerator
     {
         public void GenerateInvoice(Order order)
         {
@@ -51,12 +51,12 @@
         }
     }
 
-    interface INotificationService
+    public  interface INotificationService
     {
         void NotifyCustomer(Order order);
     }
 
-    class NotificationService : INotificationService
+    public class NotificationService : INotificationService
     {
         public void NotifyCustomer(Order order)
         {
@@ -66,7 +66,7 @@
     }
 
 
-    class Order
+    public class Order
     {
         // Proprietăți pentru gestionarea comenzii
         public int OrderId { get; set; }
@@ -74,7 +74,7 @@
         public double OrderAmount { get; set; }
     }
 
-    class OrderProcessing
+    public class OrderProcessing
     {
         private readonly IOrderValidator _orderValidator;
         private readonly IPaymentProcessor _paymentProcessor;

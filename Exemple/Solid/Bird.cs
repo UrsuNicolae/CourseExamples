@@ -20,7 +20,7 @@ namespace Exemple.Solid
     {
         void Swim();
     }
-    }
+
 
 
     // Subclasă pentru pinguin, care nu poate zbura
