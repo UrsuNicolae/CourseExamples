@@ -1,4 +1,4 @@
-﻿using Exemple.Solid;
+﻿using Exemple.Delegates;
 
 namespace Exemple
 {
@@ -7,17 +7,12 @@ namespace Exemple
 
         static void Main(string[] args)
         {
-            var user = new User
-            {
-                UserName = "JohnDoe",
-                Email = "Email test"
-            };
-            IUserRepository rep = new UserRepository();
-            var userManager = new UserManager(rep);
+            var strings = new List<string>() { "hello", "world", "foo", "bar" };
+            StringFilterClass.StringFilter startWith = str => StringFilterClass.StartWithLetter(str, 'h');
+            StringFilterClass.StringFilter contains = str => StringFilterClass.ContainsSubString(str, "o");
+            StringFilterClass.StringFilter longerThan = str => StringFilterClass.IsLongerThan(str, 3);
 
-            userManager.AddUser(user);
-            userManager.UpdateUser(user);
-            userManager.DeleteUser(user);
+            var filterdStrings  = StringFilterClass.FilterStrings(strings, new List<StringFilterClass.StringFilter> { startWith, contains, longerThan});
         }
     }
 }
