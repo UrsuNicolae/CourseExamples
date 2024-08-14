@@ -1,9 +1,66 @@
 ﻿using Exemple.Delegates;
+using System.ComponentModel.Design.Serialization;
 
 namespace Exemple
 {
     internal class Program
     {
+        /*public interface ITest
+        {
+            void Run();
+        }
+
+        public interface ITest2
+        {
+            void Run2();
+        }
+
+        public class Test : ITest
+        {
+            private readonly IDesignerLoaderHost _designerLoaderHost;
+            public Test(IDesignerLoaderHost designerLoaderHost)
+            {
+                _designerLoaderHost = designerLoaderHost;
+            }
+            public void Run()
+            {
+                Console.WriteLine("Run");
+            }
+        }
+
+        public class Test3
+        {
+            private readonly IDesignerLoaderHost _designerLoaderHost;
+            public Test(IDesignerLoaderHost designerLoaderHost)
+            {
+                _designerLoaderHost = designerLoaderHost;
+            }
+            public void Run()
+            {
+                Console.WriteLine("Run");
+            }
+        }
+
+        public class  Test2 : ITest2
+        {
+            private readonly Test _test;
+            public Test2(Test test)
+            {
+                _test = test;
+            }
+
+            public void Run2()
+            {
+                Console.WriteLine("Run2");
+            }
+        }
+
+        new Test();
+        var designerLoaderHost = new DesignerLoaderHost();
+        ...*/
+
+
+
         public static bool StartWithLetter(string srt, char letter)
         {
             return srt.StartsWith(letter);

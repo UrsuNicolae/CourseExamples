@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
+using WebApplication1.Repositories;
 
 namespace WebApplication1.Controllers
 {
@@ -7,51 +9,52 @@ namespace WebApplication1.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static List<WeatherForecast> Summaries = new List<WeatherForecast>
-        {
-            new WeatherForecast { Date = DateTime.Now.AddDays(1), Temperature = 25, Summary = "Hot" },
-            new WeatherForecast { Date = DateTime.Now.AddDays(2), Temperature = 15, Summary = "Cold" },
-            new WeatherForecast { Date = DateTime.Now.AddDays(3), Temperature = 20, Summary = "Warm" },
-            new WeatherForecast { Date = DateTime.Now.AddDays(4), Temperature = 30, Summary = "Very Hot" },
-            new WeatherForecast { Date = DateTime.Now.AddDays(5), Temperature = 10, Summary = "Very Cold" }
-        };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IWeatherForecastRepository _weatherForecastRepository;
+        private readonly TestScopedDependency _testScoped;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
+            IWeatherForecastRepository weatherForecastRepository,
+            TestScopedDependency testScoped)
         {
             _logger = logger;
+            _weatherForecastRepository = weatherForecastRepository;
+            _testScoped = testScoped;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> GetAll()
         {
-            return Summaries;
+            return _weatherForecastRepository.GetAll();
         }
 
         [HttpGet("{summary}", Name = "GetWeatherForecastByName")]
         public IActionResult GetpByName(string summary)
         {
-            var weather = Summaries.FirstOrDefault(x => x.Summary == summary);
-            if (weather == null)
+            try
             {
-                return NotFound();
+                var weather = _weatherForecastRepository.GetByName(summary);
+                return Ok(weather);
             }
-
-            return Ok(weather);
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [HttpPost(Name = "CreateWeatherForecast")]
-        public IActionResult Create([FromBody]WeatherForecast weather)
+        public IActionResult Create([FromBody] WeatherForecast weather)
         {
-            var weatherFromList = Summaries.FirstOrDefault(x => x.Summary == weather.Summary);
-            if (weatherFromList == null)
+            try
             {
-                Summaries.Add(weather);
+                _weatherForecastRepository.Create(weather);
                 return CreatedAtRoute("GetWeatherForecastByName", new { weather.Summary }, weather);
             }
-
-            return BadRequest("Already Exists");
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         /// Create a new endpoint that will create multiple weather forecasts
@@ -59,30 +62,30 @@ namespace WebApplication1.Controllers
         [HttpDelete("{summary}", Name = "DeleteWeatherForecastByName")]
         public IActionResult DeleteByName(string summary)
         {
-            var weather = Summaries.FirstOrDefault(x => x.Summary == summary);
-            if (weather == null)
+            try
             {
-                return NotFound();
+                _weatherForecastRepository.DeleteByName(summary);
+                var result = _testScoped.GetAll();
+                return Ok();
             }
-
-            Summaries.Remove(weather);
-
-            return Ok();
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
-        [HttpPut(Name = "UpdateWeatherForecastByName")]
-        public IActionResult DeleteByName(WeatherForecast weatherForecast)
+        [HttpPut(Name = "UpdateWeatherForecast")]
+        public IActionResult Update(WeatherForecast weatherForecast)
         {
-            var index = Summaries.FindIndex(x => x.Summary == weatherForecast.Summary);
-            if (index == -1)
+            try
             {
-                return NotFound();
+                _weatherForecastRepository.Update(weatherForecast);
+                return Ok();
             }
-
-            Summaries[index].Date = weatherForecast.Date;
-            Summaries[index].Temperature = weatherForecast.Temperature;
-
-            return Ok();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
