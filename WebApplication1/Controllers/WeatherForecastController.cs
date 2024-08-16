@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Authorization;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
-using WebApplication1.Repositories;
 
 namespace WebApplication1.Controllers
 {
@@ -12,15 +11,12 @@ namespace WebApplication1.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IWeatherForecastRepository _weatherForecastRepository;
-        private readonly TestScopedDependency _testScoped;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger,
-            IWeatherForecastRepository weatherForecastRepository,
-            TestScopedDependency testScoped)
+            IWeatherForecastRepository weatherForecastRepository)
         {
             _logger = logger;
             _weatherForecastRepository = weatherForecastRepository;
-            _testScoped = testScoped;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -65,7 +61,6 @@ namespace WebApplication1.Controllers
             try
             {
                 _weatherForecastRepository.DeleteByName(summary);
-                var result = _testScoped.GetAll();
                 return Ok();
             }
             catch (Exception ex)

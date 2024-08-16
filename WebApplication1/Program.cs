@@ -1,5 +1,5 @@
+using DataAccessLayer.Repositories;
 using WebApplication1.Middlewares;
-using WebApplication1.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddScoped</*ITestScopedDependency, */TestScopedDependency>();
-builder.Services.AddTransient<IWeatherForecastRepository, WeatherForecastRepository>();
+builder.Services.AddSingleton<IWeatherForecastRepository, WeatherForecastRepository>();
 
 
 

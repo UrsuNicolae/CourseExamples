@@ -1,6 +1,7 @@
-﻿using WebApplication1.Models;
+﻿using DataAccessLayer.Models;
+using System.Collections.Generic;
 
-namespace WebApplication1.Repositories
+namespace DataAccessLayer.Repositories
 {
     public interface IWeatherForecastRepository
     {

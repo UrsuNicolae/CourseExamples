@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Models
+﻿namespace DataAccessLayer.Models
 {
     public class Summary
     {
