@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.Data;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Dtos;
 
@@ -23,10 +24,17 @@ namespace WebApplication1.Controllers
             new Product { Id = 11, Name = "Tv9", Price=1000 },
 
         };
+        private readonly BloggingContext context;
+
+        public ProductController(BloggingContext context)
+        {
+            this.context = context;
+        }
 
         [HttpGet]
         public IActionResult GetAllProducts(int pageIndex, int pageSize)
         {
+            context.SaveChanges();
             var products = Products
                 .OrderBy(p => p.Id)
                 .Skip((pageIndex - 1) * pageSize)
