@@ -1,4 +1,6 @@
-﻿namespace DataAccessLayer.Models
+﻿using System.Text.Json.Serialization;
+
+namespace DataAccessLayer.Models
 {
     public class Blog
     {
@@ -7,6 +9,6 @@
 
         public string Title { get; set; }
 
-        public ICollection<Post> Posts { get; }
+        public  ICollection<Post> Posts { get; }
     }
 }

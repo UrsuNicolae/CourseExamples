@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace DataAccessLayer.Data
 {
@@ -7,6 +8,8 @@ namespace DataAccessLayer.Data
     {
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
 
         public string DbPath { get; }
 
@@ -18,6 +21,9 @@ namespace DataAccessLayer.Data
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source={DbPath}");
+            => options//.UseLazyLoadingProxies()
+            .UseSqlite($"Data Source={DbPath}")
+            .LogTo(Console.WriteLine, LogLevel.Information)
+            .EnableSensitiveDataLogging();
     }
 }
